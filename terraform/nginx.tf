@@ -52,6 +52,6 @@ output "instance_public_ip" {
   value = google_compute_instance.nginx-instance.network_interface[0].access_config[0].nat_ip
 }
 
-output "The website will be available shortly on the following address:" {
+output "The website will be available shortly on the following address" {
   value = "spaska.zaharievi.dev"
 }
