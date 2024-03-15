@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  nginx_deployment:
+  nginx_destroy:
     timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
