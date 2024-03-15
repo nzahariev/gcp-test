@@ -33,8 +33,8 @@ resource "google_compute_instance" "nginx-instance" {
     systemctl enable nginx
     rm /etc/nginx/sites-available/default
     echo '${file("../web/index.html")}' > /var/www/html/index.html
-    echo '${file("../web/spaska.zaharievi.dev")}' > /etc/nginx/sites-available/spaska.zaharievi.dev
-    ln -s /etc/nginx/sites-available/spaska.zaharievi.dev /etc/nginx/sites-enabled/
+    echo '${file("../web/spaska.zaharievi.dev")}' > /etc/nginx/sites-available/default
+    ln -s /etc/nginx/sites-available/defaultv /etc/nginx/sites-enabled/
     apt install certbot python3-certbot-nginx -y
     certbot --nginx -d spaska.zaharievi.dev --non-interactive --agree-tos --email nencho.zahariev@gmail.com --redirect
     systemctl restart nginx
