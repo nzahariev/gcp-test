@@ -21,7 +21,10 @@ jobs:
       with:
         credentials_json: ${{ secrets.GCP_KEY }}
 
-    - name: Terraform Plan
+    - name: Terraform Init
+      run: cd terraform && terraform init
+
+    - name: Terraform Destroy
       run: cd terraform && terraform destroy --auto-approve
 
     
