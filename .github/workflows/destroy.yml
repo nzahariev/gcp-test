@@ -21,6 +21,11 @@ jobs:
       with:
         credentials_json: ${{ secrets.GCP_KEY }}
 
+    - name: Export secrets in github env
+      run: |
+        export TF_VAR_cloudflare_api_token=${{ secrets.CLOUDFLARE_API_TOKEN }}
+        export TF_VAR_cloudflare_zone_id=${{ secrets.CLOUDFLARE_ZONE_ID }}
+
     - name: Terraform Init
       run: cd terraform && terraform init
 
