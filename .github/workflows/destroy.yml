@@ -1,4 +1,4 @@
-name: Nginx Deployment 
+name: Destroy Nginx
 on:
   workflow_dispatch:
 
