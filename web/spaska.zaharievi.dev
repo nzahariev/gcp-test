@@ -10,23 +10,4 @@ server {
     location / {
         try_files $uri $uri/ =404;
     }
-
-    listen 443 ssl; 
-    ssl_certificate /etc/letsencrypt/live/spaska.zaharievi.dev/fullchain.pem; 
-    ssl_certificate_key /etc/letsencrypt/live/spaska.zaharievi.dev/privkey.pem; 
-    include /etc/letsencrypt/options-ssl-nginx.conf; 
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; 
-
-}
-server {
-    if ($host = spaska.zaharievi.dev) {
-        return 301 https://$host$request_uri;
-    } 
-
-
-    listen 80;
-    server_name spaska.zaharievi.dev;
-    return 404; 
-
-
 }

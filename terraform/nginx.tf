@@ -31,6 +31,7 @@ resource "google_compute_instance" "nginx-instance" {
     apt install nginx -y
     systemctl start nginx
     systemctl enable nginx
+    rm /etc/nginx/sites-available/default
     echo '${file("../web/index.html")}' > /var/www/html/index.html
     echo '${file("../web/spaska.zaharievi.dev")}' > /etc/nginx/sites-available/spaska.zaharievi.dev
     ln -s /etc/nginx/sites-available/spaska.zaharievi.dev /etc/nginx/sites-enabled/
