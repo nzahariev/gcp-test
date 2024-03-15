@@ -23,8 +23,13 @@ jobs:
 
     - name: Export secrets in github env
       run: |
-        export TF_VAR_cloudflare_api_token=${{ secrets.CLOUDFLARE_API_TOKEN }}
-        export TF_VAR_cloudflare_zone_id=${{ secrets.CLOUDFLARE_ZONE_ID }} 
+        TF_VAR_cloudflare_api_token=${{ secrets.CLOUDFLARE_API_TOKEN }}
+        echo ::add-mask::$TF_VAR_cloudflare_api_token
+        echo TF_VAR_cloudflare_api_token=$TF_VAR_cloudflare_api_token >> $GITHUB_ENV
+
+        TF_VAR_cloudflare_zone_id=${{ secrets.CLOUDFLARE_ZONE_ID }}
+        echo ::add-mask::$TF_VAR_cloudflare_zone_id
+        echo TF_VAR_cloudflare_zone_id=$TF_VAR_cloudflare_zone_id >> $GITHUB_ENV
 
     - name: Terraform Plan
       run: cd terraform && terraform init && terraform plan
