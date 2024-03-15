@@ -3,13 +3,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  terraform_apply:
+  nginx_deployment:
     timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
 
     - name: Check out code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: HashiCorp - Setup Terraform
       uses: hashicorp/setup-terraform@v3.0.0
@@ -22,6 +22,8 @@ jobs:
         credentials_json: ${{ secrets.GCP_KEY }}
 
     - name: Terraform Plan
-      run: terraform init && terraform plan
+      run: cd terraform && terraform init && terraform plan
     
+    - name: Terraform Apply
+      run: terraform apply --auto-approve
     

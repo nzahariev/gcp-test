@@ -26,10 +26,10 @@ resource "google_compute_instance" "nginx-instance" {
   }
 
   metadata_startup_script = <<EOF
-    # Update Debian and install dependencies \
-    apt update \
-    apt install git curl gnupg2 ca-certificates lsb-release debian-archive-keyring nginx -y \
-    systemctl start nginx \
+    #Update Debian and install dependencies
+    apt update
+    apt install git curl gnupg2 ca-certificates lsb-release debian-archive-keyring nginx -y
+    systemctl start nginx
     systemctl enable nginx
 EOF
 
