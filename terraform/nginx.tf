@@ -33,7 +33,7 @@ resource "google_compute_instance" "nginx-instance" {
     systemctl enable nginx
     rm /etc/nginx/sites-available/default
     echo '${file("../web/index.html")}' > /var/www/html/index.html
-    echo '${file("../web/spaska.zaharievi.dev")}' > /etc/nginx/sites-available/default
+    echo '${file("../web/nginx.conf")}' > /etc/nginx/sites-available/default
     ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
     apt install certbot python3-certbot-nginx -y
     certbot --nginx -d spaska.zaharievi.dev --non-interactive --agree-tos --email nencho.zahariev@gmail.com --redirect
@@ -50,4 +50,8 @@ EOF
 
 output "instance_public_ip" {
   value = google_compute_instance.nginx-instance.network_interface[0].access_config[0].nat_ip
+}
+
+output "The website will be available shortly on the following address:" {
+  value = "spaska.zaharievi.dev"
 }
