@@ -32,6 +32,10 @@ resource "google_compute_instance" "nginx-instance" {
     systemctl start nginx
     systemctl enable nginx
     echo '${file("../web/index.html")}' > /var/www/html/index.html
+    echo '${file("../web/spaska.zaharievi.dev")}' > /etc/nginx/sites-available/spaska.zaharievi.dev
+    ln -s /etc/nginx/sites-available/spaska.zaharievi.dev /etc/nginx/sites-enabled/
+    systemctl reload nginx
+
 EOF
 
   service_account {
