@@ -10,5 +10,4 @@ terraform {
 provider "google" {
   project = "nzahariev"
   region  = "europe-west3"
-  credentials = "./nzahariev-key.json"
 }
